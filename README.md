@@ -1,44 +1,35 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## This is the exercise code for the vidly proyect
 
-## Available Scripts
+### Setting up the vidly project
 
-In the project directory, you can run:
+First we have to create the app, install boostrap and font-awesome:
 
-### `npm start`
+```
+create-react-app vidly
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+npm i bootstrap@4.1.1 font-awesome@4.7.0
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+In index.js we import the css of bootstrap `import 'bootstrap/dist/css/bootstrap.css';` and font-awesome: `import 'font-awesome/css/font-awesome.css';`
 
-### `npm test`
+Web pack will pull this css files to the bundle in production.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The we have to delete the black banner and put a simple [boostrap template](https://getbootstrap.com/docs/4.1/examples/starter-template/)
 
-### `npm run build`
+In the source code we will ignore the navigation bar. The container will be the class that will use.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In the app.js we will delete the black banner in the return statement and include the main container with the className (it is important to recall that className is used in jsx to call clases when babel compiles the code):
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+```
+      <main className="container">
+        <h1>Hello World!</h1>
+      </main>
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If we open the inspector, the logo will pop up a warning so we have to delete the import in app.js the logo.
 
-### `npm run eject`
+In the folder services we will find a bunch of movie classes and usefull functions for the next exercise. It is important to note that \_id is the identifier of each of the movies, it is not casual, mongodb uses this prefix.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Exercise
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Create a movie component displaying the movies in a table defined in the fake moviservices.js A message on the top with the total of numbers. A delete button that erase each movie. Finally if the movie counts reach to zero, the message has to display the are no movies in the database.
