@@ -19,7 +19,21 @@ const Pagination = props => {
             key={page}
             className={page === currentPage ? "page-item active" : "page-item"}
           >
-            <a className="page-link" onClick={() => onPageChange(page)}>
+            <a
+              className="page-link"
+              /*type="button"
+              className="link-button"
+              style={{
+                backgroundColor: "transparent",
+                border: "none",
+                cursor: "pointer",
+                textDecoration: "underline",
+                display: "inline",
+                margin: "0",
+                padding: "0"
+              }}*/
+              onClick={() => onPageChange(page)}
+            >
               {page}
             </a>
           </li>
