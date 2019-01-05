@@ -10,11 +10,12 @@ class Movies extends Component {
     movies: [], //until I use lifehooks, this will be the way I will set the state
     genres: [], //For the purpous of this exercise will get the genres in component did mount
     currentPage: 1, //current page in the pagination
-    pageSize: 3 //number of pages displayed
+    pageSize: 4 //number of pages displayed
   };
 
   componentDidMount() {
-    this.setState({ movies: getMovies(), genres: getGenres() });
+    const genres = [{ name: "All Genres" }, ...getGenres()];
+    this.setState({ movies: getMovies(), genres });
   }
 
   handleDelete = movie => {
@@ -49,7 +50,7 @@ class Movies extends Component {
 
   handleGenreSelect = genre => {
     //console.log(genre);
-    this.setState({ selectedGenre: genre });
+    this.setState({ selectedGenre: genre, currentPage: 1 });
   };
 
   render() {
@@ -65,9 +66,10 @@ class Movies extends Component {
 
     //before pagination we need to do filtering
 
-    const filtered = selectedGenre
-      ? allMovies.filter(m => m.genre._id === selectedGenre._id)
-      : allMovies;
+    const filtered =
+      selectedGenre && selectedGenre._id
+        ? allMovies.filter(m => m.genre._id === selectedGenre._id)
+        : allMovies;
     const movies = paginate(filtered, currentPage, pageSize); //if count is not 0 we will create an array of movies
 
     return (
