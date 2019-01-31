@@ -8,11 +8,21 @@ class LoginForm extends Component {
   //   this.username.current.focus();
   // }
   state = {
-    account: { username: "", password: "" }
+    account: { username: "", password: "" },
+    errors: {} //we include errors object
+  };
+
+  validate = () => {
+    return { username: "Username is requiered." };
   };
 
   handleSubmit = e => {
-    e.preventDefault();
+    e.preventDefault(); //let's stop this event
+
+    const errors = this.validate();
+    this.setState({ errors });
+
+    if (errors) return;
     //call the server
     //const username = this.username.current.value;
     console.log("submited");
