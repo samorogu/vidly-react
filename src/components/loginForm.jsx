@@ -13,13 +13,23 @@ class LoginForm extends Component {
   };
 
   validate = () => {
-    return { username: "Username is requiered." };
+    const errors = {};
+
+    const { account } = this.state;
+
+    if (account.username.trim() === "")
+      errors.username = "Username is requiered.";
+    if (account.password.trim() === "")
+      errors.password = "Password is requiered.";
+
+    return Object.keys(errors).length === 0 ? null : errors;
   };
 
   handleSubmit = e => {
     e.preventDefault(); //let's stop this event
 
     const errors = this.validate();
+    console.log(errors);
     this.setState({ errors });
 
     if (errors) return;
