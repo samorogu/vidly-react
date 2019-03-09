@@ -6,7 +6,7 @@ import { apiUrl } from "../config.json";
 const apiEndpoint = apiUrl + "/movies";
 
 function MovieUrl(id) {
-  return `${apiEndpoint}/{id}`; //template numerals in EG6
+  return `${apiEndpoint}/${id}`; //template numerals in EG6
   //return "apiEndpoint +'/'+id;";//less elegant solution
 }
 
