@@ -72,8 +72,8 @@ class MovieForm extends Form {
     this.setState({ selectedGenre: genre });
   };
 
-  doSubmit = () => {
-    saveMovie(this.state.data);
+  doSubmit = async () => {
+    await saveMovie(this.state.data);
 
     this.props.history.push("/movies"); //finally we redirect the user to movies
   };
