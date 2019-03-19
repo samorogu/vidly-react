@@ -32,7 +32,7 @@ class LoginForm extends Form {
       localStorage.setItem("token", jwt);
       this.props.history.push("/");
     } catch (ex) {
-      if (ex.response && ex.response.status == 400) {
+      if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
         errors.username = ex.response.data;
         this.setState({ errors });
