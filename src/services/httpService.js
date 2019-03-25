@@ -1,6 +1,11 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 import logger from "./logService";
+import auth from "./authService";
+
+//as common, post can be used to send information in the header of http post
+axios.defaults.headers.common["x-auth-token"] = auth.getJwt();
+
 //axios.interceptors.response.use(success,error)//for  now we only want intercept errors
 axios.interceptors.response.use(null, error => {
   const expectedError =
