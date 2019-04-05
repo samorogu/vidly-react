@@ -19,20 +19,30 @@ class MoviesTable extends Component {
     { path: "dailyRentalRate", label: "Rate" },
     {
       key: "like",
-      content: movie => (
-        <Like liked={movie.liked} onClick={() => this.props.onLike(movie)} />
-      )
+      content: movie => {
+        if (this.props.user)
+          return (
+            <Like
+              liked={movie.liked}
+              onClick={() => this.props.onLike(movie)}
+            />
+          );
+      }
     },
     {
       key: "delete",
-      content: movie => (
-        <button
-          onClick={() => this.props.onDelete(movie)}
-          className="btn btn-danger btn-sm ml-2"
-        >
-          Delete
-        </button>
-      )
+      content: movie => {
+        if (this.props.user && this.props.user.isAdmin)
+          return (
+            <button
+              onClick={() => this.props.onDelete(movie)}
+              className="btn btn-danger btn-sm ml-2"
+            >
+              Delete
+            </button>
+          );
+        return null;
+      }
     }
   ];
 
