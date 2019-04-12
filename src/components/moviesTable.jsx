@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Like from "../common/like";
 import Table from "../common/table";
+import auth from "../services/authService";
 
 class MoviesTable extends Component {
   //it doesn't need to be within a state because it won't change in lifecycle hooks
@@ -28,23 +29,26 @@ class MoviesTable extends Component {
             />
           );
       }
-    },
-    {
-      key: "delete",
-      content: movie => {
-        if (this.props.user && this.props.user.isAdmin)
-          return (
-            <button
-              onClick={() => this.props.onDelete(movie)}
-              className="btn btn-danger btn-sm ml-2"
-            >
-              Delete
-            </button>
-          );
-        return null;
-      }
     }
   ];
+
+  deleteColumn = {
+    key: "delete",
+    content: movie => (
+      <button
+        onClick={() => this.props.onDelete(movie)}
+        className="btn btn-danger btn-sm"
+      >
+        delete
+      </button>
+    )
+  };
+
+  constructor() {
+    super();
+    const user = auth.getCurrentUser();
+    if (user && user.isAdmin) this.columns.push(this.deleteColumn);
+  }
 
   render() {
     const { movies, sortColumn, onSort } = this.props;
