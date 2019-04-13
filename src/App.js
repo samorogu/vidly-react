@@ -15,6 +15,8 @@ import auth from "./services/authService";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
+console.log(process.env);
+
 class App extends Component {
   state = {};
 
