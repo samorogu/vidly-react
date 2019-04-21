@@ -6,6 +6,7 @@ import logger from "./logService";
 //axios.defaults.headers.common["x-auth-token"] = auth.getJwt();
 
 //axios.interceptors.response.use(success,error)//for  now we only want intercept errors
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.interceptors.response.use(null, error => {
   const expectedError =
     error.response &&

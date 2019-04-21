@@ -125,7 +125,7 @@ class Movies extends Component {
       searchQuery
     } = this.state;
     const { user } = this.props;
-    if (count === 0) return <p>There are no movies</p>;
+    //if (count === 0) return <p>There are no movies</p>;
 
     //before pagination we need to do filtering
 
